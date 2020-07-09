@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import CountryList from './component/CountryList/CountryList';
 
 class App extends Component {
   constructor() {
@@ -19,19 +20,15 @@ class App extends Component {
       const data = await resp.json()
       if (data.length)
         this.setState(prevState => (
-          { stats: prevState.stats.concat(data[data.length - 1]) }
+          { stats: prevState.stats.concat({...data[data.length - 1],CountryCode:country.ISO2}) }
         ))
     })
-
   }
 
   render() {
     return (
       <div className='App'>
-        {
-          this.state.stats.map(country => <h1>{country.Country}</h1>)
-        }
-
+        <CountryList stats = {this.state.stats}/>
       </div>
     )
   }
