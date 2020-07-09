@@ -40,9 +40,14 @@ class App extends Component {
     ))
     return (
       <div className='App'>
-        <Search
+        <h1>Covid-19 Stats Country</h1>
+<div className='search'>
+   <Search
           handleChange={this.handleChange}
           placeholder='Search Contry ...' />
+</div>
+       
+
         <CountryList stats={filterCountries} />
       </div>
     )
